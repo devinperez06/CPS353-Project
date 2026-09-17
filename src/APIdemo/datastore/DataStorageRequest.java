@@ -1,5 +1,5 @@
 package APIdemo.datastore;
 
-public interface DataStorageRequest {
+public class DataStorageRequest {
     // TBD
 }
