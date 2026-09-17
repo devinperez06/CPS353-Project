@@ -1,4 +1,4 @@
-package APIdemo.datastore;
+package apidemo.datastore;
 
 public interface DataStorageKey {
     // TBD

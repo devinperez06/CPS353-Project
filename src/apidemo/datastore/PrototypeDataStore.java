@@ -1,4 +1,4 @@
-package APIdemo.datastore;
+package apidemo.datastore;
 
 public class PrototypeDataStore {
     public void prototype(DataStore dataStore) {

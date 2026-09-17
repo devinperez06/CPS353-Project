@@ -1,4 +1,4 @@
-package APIdemo.webserver;
+package apidemo.webserver;
 
 public interface WebServer {
     LoginResponse login(LoginRequest loginRequest);

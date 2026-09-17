@@ -1,4 +1,4 @@
-package APIdemo.webserver;
+package apidemo.webserver;
 
 public class PrototypeSomeApi {
     public void prototype(WebServer server) {
