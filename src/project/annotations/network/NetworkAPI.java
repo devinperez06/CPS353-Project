@@ -1,12 +1,13 @@
 package project.annotations.network;
 
-import java.lang.annotation.ElementType;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
+//@Target(ElementType.TYPE)
+//@Retention(RetentionPolicy.RUNTIME)
+public interface NetworkAPI {
+    ConfigJobResponse configJobRequest(InputSource in, OutputSource out, Delimiters delim);
 
-@Target(ElementType.TYPE)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface NetworkAPI {
-    JobSubmissionResponse submitRequest(JobSubmissionRequest req);
+    Job configJob(InputSource in, OutputSource out, Delimiters delim);
+
+    JobSubmissionResponse submitJob(Job job);
+
+    LoadFormattedOutputResponse loadFormattedOutput(OutputSource src);
 }
