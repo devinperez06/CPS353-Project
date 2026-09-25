@@ -1,8 +1,11 @@
 package project.annotations.network;
 
+import project.annotations.Job;
+
 //@Target(ElementType.TYPE)
 //@Retention(RetentionPolicy.RUNTIME)
-public interface NetworkAPI {
+// Network API
+public interface User {
     ConfigJobResponse configJobRequest(InputSource in, OutputSource out, Delimiters delim);
 
     Job configJob(InputSource in, OutputSource out, Delimiters delim);

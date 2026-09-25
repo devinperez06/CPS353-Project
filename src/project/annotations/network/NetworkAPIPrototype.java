@@ -1,9 +1,11 @@
 package project.annotations.network;
 
+import project.annotations.Job;
+
 //@Target(ElementType.METHOD)
 //@Retention(RetentionPolicy.RUNTIME)
 public class NetworkAPIPrototype {
-    public void prototype(NetworkAPI api) {
+    public void prototype(User api) {
         InputSource in = new InputSource();
         OutputSource out = new OutputSource();
         Delimiters delim = new Delimiters();
