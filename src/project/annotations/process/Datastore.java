@@ -10,7 +10,7 @@ public interface Datastore {
     JobIdentifier getRecentJobID();
 
     // Set incoming job's ID
-    SetIDResponse setID(Job job, JobIdentifier jID);
+    SetIDResponse setID(Job job, JobIdentifier jobId);
 
     // Check if job is complete
     CompleteStatus isComplete(Job job);
@@ -19,10 +19,10 @@ public interface Datastore {
     WriteJobResponse writeJob(Job job, CompleteStatus status);
 
     // Read job from data storage system
-    JobRequestResponse requestJob(JobIdentifier jID);
+    JobRequestResponse requestJob(JobIdentifier jobId);
 
     // Return job to compute engine
-    Job getJob(JobIdentifier jID);
+    Job getJob(JobIdentifier jobId);
 
     // Format input for compute engine
     InputForCompute extractInputFromJob(Job job);
