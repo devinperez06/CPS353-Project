@@ -1,5 +1,6 @@
 package project.annotations.process;
 
+import project.annotations.InputForCompute;
 import project.annotations.Job;
 
 //@Target(ElementType.TYPE)
