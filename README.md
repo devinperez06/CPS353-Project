@@ -1,3 +1,5 @@
-# Software Engineering Project Starter Code
+# Software Engineering Project
 
-This repo will start you off with an initial configuration that you'll modify as part of Checkpoint 1. As part of the modifications, you'll eventually delete the contents of this README and replace it with documentation for your project.
+The computation that my project will be based on is the summation of primes. Given an integer, n, find the sum of all primes below n. 
+
+<img width="732" height="592" alt="System Diagram drawio (1)" src="https://github.com/user-attachments/assets/b752d541-cc94-4a1c-a035-5d89454bafea" />
