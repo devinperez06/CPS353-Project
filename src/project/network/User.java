@@ -1,10 +1,9 @@
-package project.annotations.network;
+package project.network;
 
-import project.annotations.Job;
+import project.Job;
+import project.annotations.NetworkAPI;
 
-//@Target(ElementType.TYPE)
-//@Retention(RetentionPolicy.RUNTIME)
-// Network API
+@NetworkAPI
 public interface User {
     ConfigJobResponse configJobRequest(InputSource in, OutputSource out, Delimiters delim);
 

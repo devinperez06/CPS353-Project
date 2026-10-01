@@ -1,4 +1,4 @@
-package project.annotations.process;
+package project.process;
 
 public class JobIdentifier {
     // TBD

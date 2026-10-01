@@ -1,4 +1,4 @@
-package project.annotations;
+package project.process;
 
 public class InputForCompute {
 }

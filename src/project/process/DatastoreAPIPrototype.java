@@ -1,11 +1,13 @@
-package project.annotations.process;
+package project.process;
 
-import project.annotations.Job;
+import project.Job;
+import project.annotations.ProcessAPIPrototype;
 
 //@Target(ElementType.METHOD)
 //@Retention(RetentionPolicy.RUNTIME)
-public class ProcessAPIPrototype {
-    public void prototypeAPIProcess(Datastore api) {
+public class DatastoreAPIPrototype {
+    @ProcessAPIPrototype
+    public void prototypeDatastore(Datastore api) {
         // Writing job
         JobIdentifier jobId = api.getRecentJobID();
         Job job = new Job();
