@@ -1,9 +1,9 @@
-package project.annotations.conceptual;
+package project.conceptual;
 
-import project.annotations.InputForCompute;
+import project.InputForCompute;
+import project.annotations.ProcessAPI;
 
-//@Target(ElementType.TYPE)
-//@Retention(RetentionPolicy.RUNTIME)
+@ProcessAPI
 public interface ComputeEngine {
     // Get output from computation program, given an input
     OutputValue solve(InputForCompute input);

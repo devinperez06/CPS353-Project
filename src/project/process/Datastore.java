@@ -1,10 +1,9 @@
-package project.annotations.process;
+package project.process;
 
-import project.annotations.Job;
+import project.Job;
+import project.annotations.ProcessAPI;
 
-//@Target(ElementType.TYPE)
-//@Retention(RetentionPolicy.RUNTIME)
-// Process API
+@ProcessAPI
 public interface Datastore {
     // Get latest ID from storage
     JobIdentifier getRecentJobID();

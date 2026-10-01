@@ -1,4 +1,4 @@
-package project.annotations.conceptual;
+package project.conceptual;
 
 public interface OutputValue {
     // TBD

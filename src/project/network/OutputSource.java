@@ -1,4 +1,4 @@
-package project.annotations.network;
+package project.network;
 
 public class OutputSource {
     // TBD
