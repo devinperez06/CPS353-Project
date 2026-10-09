@@ -1,5 +1,5 @@
 package project.process;
 
 public interface JobRequestResponse {
-    // TBD
+    JobRequestResponseCode getResponseCode();
 }

@@ -4,11 +4,7 @@ import project.Job;
 import project.annotations.NetworkAPI;
 
 @NetworkAPI
-public interface User {
-    ConfigJobResponse configJobRequest(InputSource in, OutputSource out, Delimiters delim);
-
-    Job configJob(InputSource in, OutputSource out, Delimiters delim);
-
+public interface ComputeEngine {
     JobSubmissionResponse submitJob(Job job);
 
     LoadFormattedOutputResponse loadFormattedOutput(OutputSource src);

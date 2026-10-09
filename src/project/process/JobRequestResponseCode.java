@@ -1,11 +1,11 @@
-package project.network;
+package project.process;
 
-public enum ConfigJobResponseCode {
+public enum JobRequestResponseCode {
     SUCCESS(true),
     FAILURE(false);
     private boolean success;
 
-    private ConfigJobResponseCode(boolean success) {
+    private JobRequestResponseCode(boolean success) {
         this.success = success;
     }
 
@@ -13,3 +13,4 @@ public enum ConfigJobResponseCode {
         return success;
     }
 }
+

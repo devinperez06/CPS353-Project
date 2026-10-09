@@ -11,18 +11,12 @@ public interface Datastore {
     // Set incoming job's ID
     SetIDResponse setID(Job job, JobIdentifier jobId);
 
-    // Check if job is complete
-    CompleteStatus isComplete(Job job);
-
     // Write job to data storage system
-    WriteJobResponse writeJob(Job job, CompleteStatus status);
+    WriteJobResponse writeJob(Job job);
 
     // Read job from data storage system
     JobRequestResponse requestJob(JobIdentifier jobId);
 
     // Return job to compute engine
     Job getJob(JobIdentifier jobId);
-
-    // Format input for compute engine
-    InputForCompute extractInputFromJob(Job job);
 }

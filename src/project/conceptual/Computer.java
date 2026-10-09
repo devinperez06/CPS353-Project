@@ -1,11 +1,13 @@
 package project.conceptual;
 
 import project.InputForCompute;
-import project.annotations.ProcessAPI;
+import project.Job;
+import project.annotations.ConceptualAPI;
 
-@ProcessAPI
-public interface ComputeEngine {
-    // Get output from computation program, given an input
+@ConceptualAPI
+public interface Computer {
+    InputForCompute extractInput(Job job);
+
     OutputValue solve(InputForCompute input);
 
     SendOutputResponse sendOutput(OutputValue val);
