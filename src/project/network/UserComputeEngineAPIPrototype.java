@@ -16,7 +16,7 @@ public class UserComputeEngineAPIPrototype {
         System.out.println(res);
         // Load a response
         OutputSource solvedOut = new OutputSource();
-        LoadFormattedOutputResponse lRes = api.loadFormattedOutput(solvedOut);
-        System.out.println(lRes);
+        LoadFormattedOutputResponse lres = api.loadFormattedOutput(solvedOut);
+        System.out.println(lres);
     }
 }
