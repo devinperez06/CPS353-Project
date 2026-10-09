@@ -5,20 +5,23 @@ import project.annotations.ProcessAPIPrototype;
 
 //@Target(ElementType.METHOD)
 //@Retention(RetentionPolicy.RUNTIME)
-public class DatastoreAPIPrototype {
+public class EngineStoreAPIPrototype {
     @ProcessAPIPrototype
-    public void prototypeDatastore(Datastore api) {
+    public void prototypeEngineStore(Datastore api) {
         // Writing job
         JobIdentifier jobId = api.getRecentJobID();
         Job job = new Job();
         SetIDResponse res = api.setID(job, jobId);
-        CompleteStatus isComplete = api.isComplete(job);
-        WriteJobResponse writeResponse = api.writeJob(job, isComplete);
+        System.out.println(res);
+        WriteJobResponse writeResponse = api.writeJob(job);
+        System.out.println(writeResponse);
 
         // Reading job
         JobIdentifier requestJobId = new JobIdentifier();
         JobRequestResponse requestResponse = api.requestJob(requestJobId);
-        Job requestJob = api.getJob(requestJobId);
-        InputForCompute input = api.extractInputFromJob(requestJob);
+        if (requestResponse.getResponseCode().success()) {
+            Job requestedJob = api.getJob(requestJobId);
+            System.out.println(requestedJob);
+        }
     }
 }
