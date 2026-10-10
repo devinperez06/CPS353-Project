@@ -1,18 +1,29 @@
 package implementations.conceptual;
 
-import implementations.JobImp;
+import project.InputForCompute;
+import project.Job;
+import project.conceptual.Computer;
+import project.conceptual.OutputValue;
 
 public class ComputerImp {
+    private final Computer api;
 
-    public int extractInput(JobImp job) {
-        return 0;
+    public ComputerImp(Computer api) {
+        this.api = api;
     }
 
-    public int solve(InputForComputeImp input) {
-        return 0;
+    public int extractInput(Job job) {
+        api.extractInput(job);
+        return 1;
     }
 
-    public String sendOutput(OutputValueImp val) {
+    public int solve(InputForCompute input) {
+        api.solve(input);
+        return 1;
+    }
+
+    public String sendOutput(OutputValue val) {
+        api.sendOutput(val);
         return "";
     }
 }

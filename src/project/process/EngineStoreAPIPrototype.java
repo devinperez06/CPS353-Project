@@ -17,7 +17,7 @@ public class EngineStoreAPIPrototype {
         System.out.println(writeResponse);
 
         // Reading job
-        JobIdentifier requestJobId = new JobIdentifier();
+        JobIdentifier requestJobId = new JobIdentifier(0);
         JobRequestResponse requestResponse = api.requestJob(requestJobId);
         if (requestResponse.getResponseCode().success()) {
             Job requestedJob = api.getJob(requestJobId);

@@ -1,43 +1,49 @@
 package implementations.conceptual;
 
-import implementations.JobImp;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
+import project.InputForCompute;
+import project.Job;
+import project.conceptual.Computer;
+import project.conceptual.OutputValue;
+import project.conceptual.SendOutputResponse;
 
 import static org.junit.jupiter.api.Assertions.fail;
+import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
 public class TestComputerImp {
     @Test
-    public void extractJobTest() {
-        ComputerImp mockComputer = Mockito.mock(ComputerImp.class);
-        JobImp mockJob = Mockito.mock(JobImp.class);
-        when(mockComputer.extractInput(mockJob)).thenReturn(5);
-        ComputerImp actualComputer = new ComputerImp();
-        if (mockComputer.extractInput(mockJob) != actualComputer.extractInput(mockJob)) {
-            fail("Extract Job Test Failed");
+    public void extractInputTest() {
+        Computer api = Mockito.mock(Computer.class);
+        ComputerImp computer = new ComputerImp(api);
+        Job mockJob = Mockito.mock(Job.class);
+        when(api.extractInput(any(Job.class))).thenReturn(new InputForCompute(1));
+        if (computer.extractInput(mockJob) != api.extractInput(mockJob).getNum()) {
+            fail("Extract Job Test Failed.");
         }
     }
 
     @Test
     public void solveTest() {
-        ComputerImp mockComputer = Mockito.mock(ComputerImp.class);
-        InputForComputeImp input = Mockito.mock(InputForComputeImp.class);
-        when(mockComputer.solve(input)).thenReturn(5);
-        ComputerImp actualComputer = new ComputerImp();
-        if (mockComputer.solve(input) != actualComputer.solve(input)) {
-            fail("Solve test failed");
+        Computer api = Mockito.mock(Computer.class);
+        ComputerImp computer = new ComputerImp(api);
+        InputForCompute input = Mockito.mock(InputForCompute.class);
+        when(api.solve(any(InputForCompute.class))).thenReturn(new OutputValue(1));
+        if (computer.solve(input) != api.solve(input).getNum()) {
+            fail("Solve test failed.");
         }
     }
 
     @Test
     public void sendOutputTest() {
-        ComputerImp mockComputer = Mockito.mock(ComputerImp.class);
-        OutputValueImp output = Mockito.mock(OutputValueImp.class);
-        when(mockComputer.sendOutput(output)).thenReturn("Output sent successfully!");
-        ComputerImp actualComputer = new ComputerImp();
-        if (!(mockComputer.sendOutput(output).equals(actualComputer.sendOutput(output)))) {
-            fail("Send output test failed");
+        Computer api = Mockito.mock(Computer.class);
+        ComputerImp computer = new ComputerImp(api);
+        OutputValue output = new OutputValue(1);
+        SendOutputResponse res = () -> "";
+        when(api.sendOutput(any(OutputValue.class))).thenReturn(res);
+        if (!(computer.sendOutput(output).equals(api.sendOutput(output).text()))) {
+            fail("Send output test failed.");
         }
     }
 }

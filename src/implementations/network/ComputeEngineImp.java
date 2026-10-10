@@ -1,15 +1,23 @@
 package implementations.network;
 
-import implementations.JobImp;
+import project.Job;
+import project.network.ComputeEngine;
 import project.network.OutputSource;
 
 public class ComputeEngineImp {
+    private final ComputeEngine api;
 
-    public static String submitJob(JobImp job) { // String comes JobSubmissionResponse.text()
+    public ComputeEngineImp(ComputeEngine api) {
+        this.api = api;
+    }
+
+    public String submitJob(Job job) {
+        api.submitJob(job);
         return "";
     }
 
-    public static String loadFormattedOutput(OutputSource src) {
+    public String loadFormattedOutput(OutputSource src) {
+        api.loadFormattedOutput(src);
         return "";
     }
 }
