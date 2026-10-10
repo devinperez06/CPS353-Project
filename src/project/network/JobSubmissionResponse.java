@@ -1,5 +1,5 @@
 package project.network;
 
 public interface JobSubmissionResponse {
-    // TBD
+    String text(); // Generate user-friendly output based on response code
 }

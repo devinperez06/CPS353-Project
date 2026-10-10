@@ -1,5 +1,5 @@
 package project.process;
 
 public interface WriteJobResponse {
-    // TBD
+    String text(); // Generate user-friendly output based on response code
 }

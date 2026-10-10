@@ -1,5 +1,5 @@
 package project.process;
 
 public interface SetIDResponse {
-    // TBD
+    String text(); // Generate user-friendly output based on response code
 }

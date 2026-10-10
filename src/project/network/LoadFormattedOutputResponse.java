@@ -1,5 +1,5 @@
 package project.network;
 
 public interface LoadFormattedOutputResponse {
-    // TBD
+    String text(); // Generate user-friendly output based on response-code
 }
