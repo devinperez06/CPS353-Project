@@ -1,21 +1,18 @@
 package implementations.conceptual;
 
-import project.InputForCompute;
-import project.Job;
-import project.conceptual.Computer;
+import implementations.JobImp;
 
 public class ComputerImp {
-    static Computer computer;
 
-    public int extractInput(Job job) {
-        return new InputForComputeImp(0).getInput();
+    public int extractInput(JobImp job) {
+        return 0;
     }
 
-    public int solve(InputForCompute input) {
-        return new OutputValueImp(0).getOutput();
+    public int solve(InputForComputeImp input) {
+        return 0;
     }
 
     public String sendOutput(OutputValueImp val) {
-        return new SendOutputResponseImp().text();
+        return "";
     }
 }

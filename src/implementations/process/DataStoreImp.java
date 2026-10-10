@@ -1,29 +1,26 @@
 package implementations.process;
 
-import apidemo.datastore.DataStore;
 import implementations.DelimitersImp;
 import implementations.InputSourceImp;
 import implementations.JobImp;
 import implementations.OutputSourceImp;
-import project.Job;
 import project.process.JobIdentifier;
 
 public class DataStoreImp {
-    static DataStore store;
 
     public int getRecentJobID() {
-        return new JobIdentifierImp(0).getInt();
+        return 0;
     }
 
-    public String setID(Job job, JobIdentifier jobId) {
-        return new SetIDResponseImp().text();
+    public String setID(JobImp job, JobIdentifier jobId) {
+        return "";
     }
 
-    public String writeJob(Job job) {
-        return new WriteJobResponseImp().text();
+    public String writeJob(JobImp job) {
+        return "";
     }
 
-    public String requestJob(Job job) {
+    public String requestJob(JobImp job) {
         return "";
     }
 

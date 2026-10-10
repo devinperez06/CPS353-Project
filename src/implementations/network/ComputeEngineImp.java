@@ -10,6 +10,6 @@ public class ComputeEngineImp {
     }
 
     public static String loadFormattedOutput(OutputSource src) {
-        return new LoadFormattedOutputResponseImp().text();
+        return "";
     }
 }
