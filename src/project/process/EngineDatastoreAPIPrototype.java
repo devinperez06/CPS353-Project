@@ -4,9 +4,9 @@ import project.Job;
 import project.JobIdentifier;
 import project.annotations.ProcessAPIPrototype;
 
-public class EngineStoreAPIPrototype {
+public class EngineDatastoreAPIPrototype {
     @ProcessAPIPrototype
-    public void prototypeEngineStore(Datastore api) {
+    public void prototypeEngineDatastore(Datastore api) {
         // Writing job
         Job job = new Job();
         WriteJobResponse writeResponse = api.writeJob(job);

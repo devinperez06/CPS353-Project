@@ -1,14 +1,11 @@
 package project.conceptual;
 
-import project.InputForCompute;
 import project.Job;
 import project.annotations.ConceptualAPI;
 
 @ConceptualAPI
 public interface JobHandler {
-    InputForCompute extractInput(Job job);
+    SendInputResponse sendInput(Job job);
 
-    OutputValue solve(InputForCompute input);
-
-    SendOutputResponse sendOutput(OutputValue val);
+    WriteOutputResponse writeOutput(OutputValue output);
 }
