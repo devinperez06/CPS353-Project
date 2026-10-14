@@ -1,5 +1,9 @@
 package project.network;
 
 public class InputSource {
-    // TBD
+    private Inputs inputs;
+
+    public InputSource(Inputs inputs) {
+        this.inputs = inputs;
+    }
 }

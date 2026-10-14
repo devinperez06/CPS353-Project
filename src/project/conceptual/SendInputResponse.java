@@ -1,5 +1,5 @@
 package project.conceptual;
 
-public interface ExtractInputResponse {
+public interface SendInputResponse {
     // TBD
 }

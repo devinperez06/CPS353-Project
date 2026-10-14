@@ -1,5 +1,5 @@
 package project.conceptual;
 
-public interface OutputValue {
+public class OutputValue {
     // TBD
 }

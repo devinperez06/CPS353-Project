@@ -1,5 +1,5 @@
 package project.conceptual;
 
-public interface SendOutputResponse {
+public interface WriteOutputResponse {
     // TBD
 }

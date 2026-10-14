@@ -1,5 +1,5 @@
 package project.process;
 
-public interface SetIDResponse {
+public interface ReadJobResponse {
     // TBD
 }
