@@ -3,20 +3,16 @@ package project.network;
 import project.Job;
 import project.annotations.NetworkAPIPrototype;
 
-//@Target(ElementType.METHOD)
-//@Retention(RetentionPolicy.RUNTIME)
 public class UserComputeEngineAPIPrototype {
     @NetworkAPIPrototype
     public void prototypeUserComputeEngine(ComputeEngine api) {
-        // Submit a job
-        InputSource in = new InputSource();
-        OutputSource out = new OutputSource();
-        Delimiters delim = new Delimiters();
-        JobSubmissionResponse res = api.submitJob(new Job(in, out, delim));
-        System.out.println(res);
+        // Create a job
+        JobCreationResponse jobCreationRes = api.createJob(new InputSource(new Inputs()), new OutputSource(), new Delimiters());
+        // Send a job
+        JobSubmissionResponse jobSubmissionRes = api.submitJob(jobCreationRes.getJob());
         // Load a response
-        OutputSource solvedOut = new OutputSource();
-        LoadFormattedOutputResponse lres = api.loadFormattedOutput(solvedOut);
-        System.out.println(lres);
+        LoadOutputResponse loadOutputRes = api.loadOutput(new Job());
+        // Get result
+        Result res = loadOutputRes.getResult();
     }
 }

@@ -2,6 +2,7 @@ package project;
 
 import project.network.Delimiters;
 import project.network.InputSource;
+import project.network.Inputs;
 import project.network.OutputSource;
 
 public class Job {
@@ -16,8 +17,8 @@ public class Job {
     }
 
     public Job() {
-        // TODO: defaults
+        this.in = new InputSource(new Inputs());
+        this.out = new OutputSource();
+        this.delim = new Delimiters();
     }
-
-    // TODO: Getters and Job Builder Logic
 }
