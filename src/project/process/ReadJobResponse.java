@@ -1,5 +1,5 @@
 package project.process;
 
-public class JobIdentifier {
+public interface ReadJobResponse {
     // TBD
 }

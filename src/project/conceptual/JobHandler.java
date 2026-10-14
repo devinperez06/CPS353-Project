@@ -5,7 +5,7 @@ import project.Job;
 import project.annotations.ConceptualAPI;
 
 @ConceptualAPI
-public interface Computer {
+public interface JobHandler {
     InputForCompute extractInput(Job job);
 
     OutputValue solve(InputForCompute input);
