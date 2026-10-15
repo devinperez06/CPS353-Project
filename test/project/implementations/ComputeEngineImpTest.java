@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import project.Job;
 import project.network.Delimiters;
 import project.network.InputSource;
-import project.network.Inputs;
 import project.network.OutputSource;
 
 import java.util.Objects;
@@ -14,7 +13,7 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class ComputeEngineImpTest {
     @Test
     public void testCreateJob() {
-        InputSource input = new InputSource(new Inputs());
+        InputSource input = new InputSource();
         OutputSource output = new OutputSource();
         Delimiters delim = new Delimiters();
         Job job = new Job(input, output, delim);

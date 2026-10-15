@@ -1,7 +1,7 @@
 package project.implementations;
 
 import org.junit.jupiter.api.Test;
-import project.Job;
+import project.conceptual.InputVal;
 import project.conceptual.OutputValue;
 
 import static org.junit.jupiter.api.Assertions.fail;
@@ -9,9 +9,9 @@ import static org.junit.jupiter.api.Assertions.fail;
 public class JobHandlerImpTest {
     @Test
     public void testSendInput() {
-        Job job = new Job();
+        InputVal val = new InputVal();
         JobHandlerImp imp = new JobHandlerImp();
-        if (!(imp.sendInput(job).toString().equals("Input sent successfully"))) {
+        if (!(imp.sendInput(val).toString().equals("Input sent successfully"))) {
             fail();
         }
     }

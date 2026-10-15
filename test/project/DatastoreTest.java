@@ -2,11 +2,11 @@ package project;
 
 import java.util.List;
 
-public class Datastore {
-    InputSource inputSrc;
-    OutputSource outputSrc;
+public class DatastoreTest {
+    InputConfig inputSrc;
+    OutputConfig outputSrc;
 
-    public Datastore(InputSource inputSrc, OutputSource outputSrc) {
+    public DatastoreTest(InputConfig inputSrc, OutputConfig outputSrc) {
         this.inputSrc = inputSrc;
         this.outputSrc = outputSrc;
     }

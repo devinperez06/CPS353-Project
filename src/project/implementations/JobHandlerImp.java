@@ -1,6 +1,6 @@
 package project.implementations;
 
-import project.Job;
+import project.conceptual.InputVal;
 import project.conceptual.JobHandler;
 import project.conceptual.OutputValue;
 import project.conceptual.SendInputResponse;
@@ -9,7 +9,7 @@ import project.conceptual.WriteOutputResponse;
 public class JobHandlerImp implements JobHandler {
 
     @Override
-    public SendInputResponse sendInput(Job job) {
+    public SendInputResponse sendInput(InputVal val) {
         return new SendInputResponse() {
         };
     }

@@ -1,11 +1,13 @@
 package project;
 
+import project.network.InputSource;
+
 import java.util.List;
 
-public class InputSource {
+public class InputConfig extends InputSource {
     List<Integer> inputs;
 
-    public InputSource(List<Integer> inputs) {
+    public InputConfig(List<Integer> inputs) {
         this.inputs = inputs;
     }
 
