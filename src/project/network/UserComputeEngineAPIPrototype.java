@@ -12,7 +12,5 @@ public class UserComputeEngineAPIPrototype {
         JobSubmissionResponse jobSubmissionRes = api.submitJob(jobCreationRes.getJob());
         // Load a response
         LoadOutputResponse loadOutputRes = api.loadOutput(new Job());
-        // Get result
-        Result res = loadOutputRes.getResult();
     }
 }
