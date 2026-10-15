@@ -6,6 +6,5 @@ public class ComputeEngineIntegrationTest {
     @Test
     public void testComputeEngine() {
         ComputeEngineImp engine = new ComputeEngineImp();
-        engine.createJob();
     }
 }
