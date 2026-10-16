@@ -111,7 +111,7 @@ public class Checkpoint3TestSuite {
         for (CtType<?> clazz : allSrcTypes) {
             if (clazz.isInterface()) {
                 if (clazz.hasAnnotation(apiAnnotation)) {
-                   return clazz.getActualClass();
+                    return clazz.getActualClass();
                 }
             }
         }
