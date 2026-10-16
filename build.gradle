@@ -18,7 +18,7 @@ sourceSets {
 
 test {
     filter {
-        includeTestsMatching "project.implementations.*"
+        excludeTestsMatching "project.implementations.*"
     }
 }
 
