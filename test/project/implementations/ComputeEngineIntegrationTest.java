@@ -34,7 +34,7 @@ public class ComputeEngineIntegrationTest {
         OutputValue output = new OutputValue();
         WriteOutputResponse writeOutputRes = jobHandler.writeOutput(new OutputValue());
         List<String> outputs = datastore.writeOutput("1:0,10:18,25:101");
-        if (!(output.toString().equals(outputs.get(1)))) {
+        if (!(output.toString().equals(outputs.get(0)))) {
             fail();
         }
     }
