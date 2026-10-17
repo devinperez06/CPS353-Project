@@ -4,16 +4,23 @@ apply plugin: 'eclipse'
 eclipse.project.name = 'CPS353 Project'
 
 sourceSets {
-	main {
-	  java {
-		srcDirs = ['src']
-	  }
-	}
-	test {
-	  java {
-	     srcDirs = ['test']
-	  }
-	 }
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+    test {
+        java {
+            srcDirs = ['test']
+        }
+    }
+}
+
+test {
+    filter {
+        excludeTestsMatching "project.implementations.*"
+        excludeTestsMatching "project.integrations.*"
+    }
 }
 
 repositories {
@@ -22,8 +29,9 @@ repositories {
 
 dependencies {
     testImplementation('org.junit.jupiter:junit-jupiter:5.10.2')
-	testImplementation('org.mockito:mockito-core:5.10.0')
-	implementation('com.google.code.gson:gson:2.13.1')
+    testImplementation('org.mockito:mockito-core:5.10.0')
+    implementation('com.google.code.gson:gson:2.13.1')
+    testImplementation('fr.inria.gforge.spoon:spoon-core:10.4.0')
 }
 
 test {
