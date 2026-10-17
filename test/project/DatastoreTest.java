@@ -1,8 +1,13 @@
 package project;
 
+import project.process.Datastore;
+import project.process.JobRequest;
+import project.process.ReadJobResponse;
+import project.process.WriteJobResponse;
+
 import java.util.List;
 
-public class DatastoreTest {
+public class DatastoreTest implements Datastore {
     InputConfig inputSrc;
     OutputConfig outputSrc;
 
@@ -18,5 +23,15 @@ public class DatastoreTest {
     public List<String> writeOutput(String output) {
         outputSrc.addOutput(output);
         return outputSrc.getOutputs();
+    }
+
+    @Override
+    public WriteJobResponse writeJob(Job job) {
+        return null;
+    }
+
+    @Override
+    public ReadJobResponse readJob(JobRequest request) {
+        return null;
     }
 }
