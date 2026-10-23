@@ -3,8 +3,8 @@ package project.conceptual;
 import project.annotations.ConceptualAPI;
 
 @ConceptualAPI
-public interface JobHandler {
-    SendInputResponse sendInput(InputVal val);
+public interface Calculator {
+    GetInputResponse getInput(InputVal val);
 
     WriteOutputResponse writeOutput(OutputValue output);
 }

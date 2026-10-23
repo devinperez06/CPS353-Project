@@ -6,12 +6,12 @@ import project.conceptual.OutputValue;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
-public class JobHandlerImpTest {
+public class CalculatorImpTest {
     @Test
-    public void testSendInput() {
+    public void testGetInput() {
         InputVal val = new InputVal();
-        JobHandlerImp imp = new JobHandlerImp();
-        if (!(imp.sendInput(val).toString().equals("Input sent successfully"))) {
+        CalculatorImp imp = new CalculatorImp();
+        if (!(imp.getInput(val).toString().equals("Input sent successfully"))) {
             fail();
         }
     }
@@ -19,7 +19,7 @@ public class JobHandlerImpTest {
     @Test
     public void testWriteOutput() {
         OutputValue value = new OutputValue();
-        JobHandlerImp imp = new JobHandlerImp();
+        CalculatorImp imp = new CalculatorImp();
         if (!(imp.writeOutput(value).toString().equals("Output written successfully"))) {
             fail();
         }

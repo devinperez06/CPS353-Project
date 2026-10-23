@@ -1,16 +1,16 @@
 package project.implementations;
 
+import project.conceptual.Calculator;
+import project.conceptual.GetInputResponse;
 import project.conceptual.InputVal;
-import project.conceptual.JobHandler;
 import project.conceptual.OutputValue;
-import project.conceptual.SendInputResponse;
 import project.conceptual.WriteOutputResponse;
 
-public class JobHandlerImp implements JobHandler {
+public class CalculatorImp implements Calculator {
 
     @Override
-    public SendInputResponse sendInput(InputVal val) {
-        return new SendInputResponse() {
+    public GetInputResponse getInput(InputVal val) {
+        return new GetInputResponse() {
         };
     }
 
