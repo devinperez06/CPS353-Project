@@ -5,6 +5,7 @@ import project.network.InputSource;
 import project.network.OutputSource;
 
 public class Job {
+    static int id = 0;
     private InputSource in;
     private OutputSource out;
     private Delimiters delim;
@@ -13,11 +14,13 @@ public class Job {
         this.in = in;
         this.out = out;
         this.delim = delim;
+        id += 1;
     }
 
     public Job() {
         this.in = new InputSource();
         this.out = new OutputSource();
         this.delim = new Delimiters();
+        id += 1;
     }
 }

@@ -1,5 +1,5 @@
 package project.network;
 
 public interface LoadOutputResponse {
-    // TBD
+    String response();
 }

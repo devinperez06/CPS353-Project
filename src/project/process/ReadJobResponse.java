@@ -1,5 +1,7 @@
 package project.process;
 
+import project.ResponseCode;
+
 public interface ReadJobResponse {
-    // TBD
+    ResponseCode getResponseCode();
 }

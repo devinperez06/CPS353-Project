@@ -1,7 +1,6 @@
 package project.process;
 
 import project.Job;
-import project.JobIdentifier;
 import project.annotations.ProcessAPIPrototype;
 
 public class EngineDatastoreAPIPrototype {
@@ -9,9 +8,15 @@ public class EngineDatastoreAPIPrototype {
     public void prototypeEngineDatastore(Datastore api) {
         // Writing job
         Job job = new Job();
-        WriteJobResponse writeResponse = api.writeJob(job);
+        WriteJobResponse writeRes = api.writeJob(job);
+        if (writeRes.getResponseCode().success()) {
+            System.out.println("Job written successfully!");
+        }
         // Reading job
-        JobRequest request = new JobRequest(new JobIdentifier());
-        ReadJobResponse res = api.readJob(request);
+        JobRequest request = new JobRequest();
+        ReadJobResponse readRes = api.readJob(request);
+        if (readRes.getResponseCode().success()) {
+            System.out.println("Job read successfully");
+        }
     }
 }

@@ -2,9 +2,8 @@ package project;
 
 import project.conceptual.Calculator;
 import project.conceptual.GetInputResponse;
-import project.conceptual.InputVal;
 import project.conceptual.OutputValue;
-import project.conceptual.WriteOutputResponse;
+import project.conceptual.SendOutputResponse;
 import project.process.Datastore;
 import project.process.JobRequest;
 import project.process.ReadJobResponse;
@@ -27,12 +26,12 @@ public class JobHandler {
         return datastore.readJob(req);
     }
 
-    public GetInputResponse getInput(InputVal val) {
-        return calculator.getInput(val);
+    public GetInputResponse getInput(Job job) {
+        return calculator.getInput(job);
     }
 
-    public WriteOutputResponse writeOutput(OutputValue val) {
-        return calculator.writeOutput(val);
+    public SendOutputResponse writeOutput(OutputValue val) {
+        return calculator.sendOutput(val);
     }
 
 

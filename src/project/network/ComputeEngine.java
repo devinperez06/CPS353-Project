@@ -7,7 +7,5 @@ import project.annotations.NetworkAPI;
 public interface ComputeEngine {
     JobCreationResponse createJob(InputSource input, OutputSource output, Delimiters delim);
 
-    JobSubmissionResponse submitJob(Job job);
-
     LoadOutputResponse loadOutput(Job job);
 }

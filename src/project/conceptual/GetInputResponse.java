@@ -1,5 +1,11 @@
 package project.conceptual;
 
+import project.ResponseCode;
+
+import java.util.List;
+
 public interface GetInputResponse {
-    // TBD
+    ResponseCode getResponseCode();
+
+    List<Integer> inputs(); // returns actual list of inputs
 }
