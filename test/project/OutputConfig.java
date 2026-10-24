@@ -1,10 +1,10 @@
 package project;
 
-import project.network.OutputSource;
+import project.network.OutputDestination;
 
 import java.util.List;
 
-public class OutputConfig extends OutputSource {
+public class OutputConfig extends OutputDestination {
     List<String> outputs;
 
     public OutputConfig(List<String> outputs) {

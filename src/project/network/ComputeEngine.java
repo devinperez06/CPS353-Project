@@ -5,7 +5,7 @@ import project.annotations.NetworkAPI;
 
 @NetworkAPI
 public interface ComputeEngine {
-    JobCreationResponse createJob(InputSource input, OutputSource output, Delimiters delim);
+    JobCreationResponse createJob(InputSource input, OutputDestination output, Delimiters delim);
 
     LoadOutputResponse loadOutput(Job job);
 }

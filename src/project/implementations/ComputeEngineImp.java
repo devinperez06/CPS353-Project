@@ -1,17 +1,30 @@
 package project.implementations;
 
 import project.Job;
+import project.JobHandler;
+import project.ResponseCode;
 import project.network.ComputeEngine;
 import project.network.Delimiters;
 import project.network.InputSource;
 import project.network.JobCreationResponse;
-import project.network.JobSubmissionResponse;
 import project.network.LoadOutputResponse;
-import project.network.OutputSource;
+import project.network.OutputDestination;
 
 public class ComputeEngineImp implements ComputeEngine {
-    public JobCreationResponse createJob(InputSource input, OutputSource output, Delimiters delim) {
+    JobHandler jobHandler;
+
+    public ComputeEngineImp(JobHandler jobHandler) {
+        this.jobHandler = jobHandler;
+    }
+
+    @Override
+    public JobCreationResponse createJob(InputSource input, OutputDestination output, Delimiters delim) {
         return new JobCreationResponse() {
+            @Override
+            public ResponseCode getResponseCode() {
+                return null;
+            }
+
             @Override
             public Job getJob() {
                 return null;
@@ -19,19 +32,16 @@ public class ComputeEngineImp implements ComputeEngine {
         };
     }
 
-    public JobSubmissionResponse submitJob(Job job) {
-        return new JobSubmissionResponse() {
-            @Override
-            public String toString() {
-                return "";
-            }
-        };
-    }
-
+    @Override
     public LoadOutputResponse loadOutput(Job job) {
         return new LoadOutputResponse() {
             @Override
-            public String toString() {
+            public ResponseCode getResponseCode() {
+                return null;
+            }
+
+            @Override
+            public String response() {
                 return "";
             }
         };

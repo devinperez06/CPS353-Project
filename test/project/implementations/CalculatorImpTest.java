@@ -1,26 +1,16 @@
 package project.implementations;
 
 import org.junit.jupiter.api.Test;
-import project.conceptual.InputVal;
-import project.conceptual.OutputValue;
+import project.InputValue;
 
 import static org.junit.jupiter.api.Assertions.fail;
 
 public class CalculatorImpTest {
     @Test
-    public void testGetInput() {
-        InputVal val = new InputVal();
+    public void testSolve() {
+        InputValue input = new InputValue();
         CalculatorImp imp = new CalculatorImp();
-        if (!(imp.getInput(val).toString().equals("Input sent successfully"))) {
-            fail();
-        }
-    }
-
-    @Test
-    public void testWriteOutput() {
-        OutputValue value = new OutputValue();
-        CalculatorImp imp = new CalculatorImp();
-        if (!(imp.writeOutput(value).toString().equals("Output written successfully"))) {
+        if (!(imp.solve(input).getResponseCode().success())) {
             fail();
         }
     }
