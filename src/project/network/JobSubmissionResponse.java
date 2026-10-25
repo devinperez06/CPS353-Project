@@ -1,10 +1,10 @@
 package project.network;
 
-import project.Job;
 import project.ResponseCode;
 
-public interface JobCreationResponse {
+public interface JobSubmissionResponse {
     ResponseCode getResponseCode();
 
-    Job getJob();
+    String response();
+
 }

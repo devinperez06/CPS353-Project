@@ -4,9 +4,11 @@ import project.Job;
 import project.OutputValue;
 import project.annotations.ProcessAPIPrototype;
 
+import java.io.IOException;
+
 public class EngineDatastoreAPIPrototype {
     @ProcessAPIPrototype
-    public void prototypeEngineDatastore(Datastore api) {
+    public void prototypeEngineDatastore(Datastore api) throws IOException {
         // Reading from job
         Job job = new Job();
         ReadJobResponse readRes = api.readJob(job);

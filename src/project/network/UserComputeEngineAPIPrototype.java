@@ -2,17 +2,15 @@ package project.network;
 
 import project.annotations.NetworkAPIPrototype;
 
+import java.io.IOException;
+
 public class UserComputeEngineAPIPrototype {
     @NetworkAPIPrototype
-    public void prototypeUserComputeEngine(ComputeEngine api) {
-        // Create a job
-        JobCreationResponse jobCreationRes = api.createJob(new InputSource(), new OutputDestination(), new Delimiters());
-        // Load a response
+    public void prototypeUserComputeEngine(ComputeEngine api) throws IOException {
+        // Submit a job
+        JobSubmissionResponse jobCreationRes = api.submitJob(new InputSource(), new OutputDestination(), new Delimiters());
         if (jobCreationRes.getResponseCode().success()) {
-            LoadOutputResponse loadOutputRes = api.loadOutput(jobCreationRes.getJob());
-            if (loadOutputRes.getResponseCode().success()) {
-                System.out.println(loadOutputRes.response());
-            }
+            System.out.println(jobCreationRes.response());
         }
     }
 }

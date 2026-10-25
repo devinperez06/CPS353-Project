@@ -16,12 +16,12 @@ sourceSets {
     }
 }
 
-test {
-    filter {
-        excludeTestsMatching "project.implementations.*"
-        excludeTestsMatching "project.integrations.*"
-    }
-}
+//test {
+//    filter {
+//        excludeTestsMatching "project.implementations.*"
+//        excludeTestsMatching "project.integrations.*"
+//    }
+//}
 
 repositories {
     mavenCentral()
