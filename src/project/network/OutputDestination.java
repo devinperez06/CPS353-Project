@@ -1,5 +1,5 @@
 package project.network;
 
-public class OutputSource {
+public class OutputDestination {
     // TBD
 }

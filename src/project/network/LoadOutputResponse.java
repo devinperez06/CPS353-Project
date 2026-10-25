@@ -1,5 +1,9 @@
 package project.network;
 
+import project.ResponseCode;
+
 public interface LoadOutputResponse {
-    // TBD
+    ResponseCode getResponseCode();
+
+    String response();
 }

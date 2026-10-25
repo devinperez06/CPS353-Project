@@ -1,16 +1,18 @@
 package project.network;
 
-import project.Job;
 import project.annotations.NetworkAPIPrototype;
 
 public class UserComputeEngineAPIPrototype {
     @NetworkAPIPrototype
     public void prototypeUserComputeEngine(ComputeEngine api) {
         // Create a job
-        JobCreationResponse jobCreationRes = api.createJob(new InputSource(), new OutputSource(), new Delimiters());
-        // Send a job
-        JobSubmissionResponse jobSubmissionRes = api.submitJob(jobCreationRes.getJob());
+        JobCreationResponse jobCreationRes = api.createJob(new InputSource(), new OutputDestination(), new Delimiters());
         // Load a response
-        LoadOutputResponse loadOutputRes = api.loadOutput(new Job());
+        if (jobCreationRes.getResponseCode().success()) {
+            LoadOutputResponse loadOutputRes = api.loadOutput(jobCreationRes.getJob());
+            if (loadOutputRes.getResponseCode().success()) {
+                System.out.println(loadOutputRes.response());
+            }
+        }
     }
 }
