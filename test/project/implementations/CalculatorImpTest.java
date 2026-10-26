@@ -18,7 +18,7 @@ public class CalculatorImpTest {
         SolveResponse res = imp.solve(input);
         ResponseCode responseCode = res.getResponseCode();
         OutputValue outputValue = res.getOutput();
-        if (!(responseCode.success()) || !(outputValue.getOutput().getFirst() == 5)) {
+        if (!(responseCode.success()) || !(outputValue.getOutput().get(0) == 5)) {
             fail();
         }
     }
