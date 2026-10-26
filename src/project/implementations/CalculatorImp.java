@@ -6,6 +6,7 @@ import project.ResponseCode;
 import project.conceptual.Calculator;
 import project.conceptual.SolveResponse;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class CalculatorImp implements Calculator {
@@ -39,7 +40,7 @@ public class CalculatorImp implements Calculator {
             }
         }
         // Solve
-        StringBuilder solution = new StringBuilder();
+        ArrayList<Integer> solution = new ArrayList<>();
         for (int index = 0; index < inputList.size(); index++) {
             int n = inputList.get(index);
             int sum = 0;
@@ -48,13 +49,10 @@ public class CalculatorImp implements Calculator {
                     sum += j;
                 }
             }
-            solution.append(sum);
-            if (index < inputList.size() - 1) {
-                solution.append(",");
-            }
+            solution.add(sum);
         }
 
-        OutputValue output = new OutputValue(solution.toString());
+        OutputValue output = new OutputValue(solution);
         return new SolveResponse() {
             @Override
             public ResponseCode getResponseCode() {

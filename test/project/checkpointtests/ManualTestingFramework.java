@@ -29,7 +29,7 @@ public class ManualTestingFramework {
         // Run a computation with an input file of <root project dir>/manualTestInput.txt
         // and an output of <root project dir>/manualTestOutput.txt, with a delimiter of ',' 
         //
-        JobSubmissionResponse res = computeEngine.submitJob(new InputSource(INPUT), new OutputDestination(OUTPUT), new Delimiters(","));
+        JobSubmissionResponse res = computeEngine.submitJob(new InputSource(INPUT), new OutputDestination(OUTPUT), new Delimiters(','));
         System.out.println(res.response());
         // Helpful hint: the working directory of this program is <root project dir>,
         // so you can refer to the files just using the INPUT/OUTPUT constants. You do not 

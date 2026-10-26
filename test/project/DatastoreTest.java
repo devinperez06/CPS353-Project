@@ -15,7 +15,7 @@ public class DatastoreTest implements Datastore {
 
     @Override
     public WriteJobResponse writeJob(OutputValue val, Job job) {
-        outputSrc.addOutput(val.getOutput());
+        outputSrc.addOutput(val.getOutput().toString());
         return new WriteJobResponse() {
             @Override
             public ResponseCode getResponseCode() {

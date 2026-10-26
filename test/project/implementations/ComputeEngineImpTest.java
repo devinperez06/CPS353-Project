@@ -48,7 +48,7 @@ public class ComputeEngineImpTest {
 
             @Override
             public OutputValue getOutput() {
-                return new OutputValue("5");
+                return new OutputValue(List.of(5));
             }
         });
         when(jobHandler.writeJob(any(OutputValue.class), any(Job.class))).thenReturn(new WriteJobResponse() {

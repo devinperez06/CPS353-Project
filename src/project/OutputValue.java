@@ -1,17 +1,20 @@
 package project;
 
-public class OutputValue {
-    String output;
+import java.util.ArrayList;
+import java.util.List;
 
-    public OutputValue(String output) {
+public class OutputValue {
+    List<Integer> output;
+
+    public OutputValue(List<Integer> output) {
         this.output = output;
     }
 
     public OutputValue() {
-        this.output = "";
+        this.output = new ArrayList<>();
     }
 
-    public String getOutput() {
+    public List<Integer> getOutput() {
         return output;
     }
 }

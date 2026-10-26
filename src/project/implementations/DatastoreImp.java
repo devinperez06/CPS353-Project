@@ -4,6 +4,7 @@ import project.InputValue;
 import project.Job;
 import project.OutputValue;
 import project.ResponseCode;
+import project.network.Delimiters;
 import project.process.Datastore;
 import project.process.ReadJobResponse;
 import project.process.WriteJobResponse;
@@ -26,7 +27,18 @@ public class DatastoreImp implements Datastore {
             return badRes;
         }
         BufferedWriter writer = new BufferedWriter(new FileWriter(job.getOutputDestination().getFilePath()));
-        writer.write(val.getOutput());
+        Delimiters delim = job.getDelim();
+        char character = delim.getCharacter();
+        List<Integer> solList = val.getOutput();
+        for (int i = 0; i < solList.size(); i++) {
+            int sol = val.getOutput().get(i);
+            if (i != solList.size() - 1) {
+                writer.write(sol);
+                writer.write(character);
+            } else {
+                writer.write(sol);
+            }
+        }
         writer.close();
         return () -> ResponseCode.SUCCESS;
     }
