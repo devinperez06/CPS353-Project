@@ -27,6 +27,7 @@ public class DatastoreImp implements Datastore {
         }
         BufferedWriter writer = new BufferedWriter(new FileWriter(job.getOutputDestination().getFilePath()));
         writer.write(val.getOutput());
+        writer.close();
         return () -> ResponseCode.SUCCESS;
     }
 
