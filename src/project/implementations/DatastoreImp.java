@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatastoreImp implements Datastore {
-    // Currently, formatting is being handled by Calculator, Calculator uses default :, delimiters
+    // Currently, formatting is being handled by Calculator, Calculator uses default , delimiter
     // TODO: Move formatting logic to write job method
     @Override
     public WriteJobResponse writeJob(OutputValue val, Job job) throws IOException {

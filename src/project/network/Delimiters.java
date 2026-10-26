@@ -8,6 +8,6 @@ public class Delimiters {
     }
 
     public Delimiters() {
-        this.characters = ":,";
+        this.characters = ",";
     }
 }

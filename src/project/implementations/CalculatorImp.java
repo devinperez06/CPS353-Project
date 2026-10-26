@@ -48,7 +48,7 @@ public class CalculatorImp implements Calculator {
                     sum += j;
                 }
             }
-            solution.append(n).append(":").append(sum);
+            solution.append(sum);
             if (index < inputList.size() - 1) {
                 solution.append(",");
             }
