@@ -34,7 +34,7 @@ public class DatastoreTest implements Datastore {
 
             @Override
             public InputValue getInput() {
-                return (InputValue) inputSrc.getInputs();
+                return new InputValue(inputSrc.getInputs());
             }
         };
     }

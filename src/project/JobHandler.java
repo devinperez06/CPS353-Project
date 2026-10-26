@@ -6,6 +6,8 @@ import project.process.Datastore;
 import project.process.ReadJobResponse;
 import project.process.WriteJobResponse;
 
+import java.io.IOException;
+
 public class JobHandler {
     Datastore datastore;
     Calculator calculator;
@@ -15,11 +17,11 @@ public class JobHandler {
         this.calculator = calculator;
     }
 
-    public WriteJobResponse writeJob(OutputValue val, Job job) {
+    public WriteJobResponse writeJob(OutputValue val, Job job) throws IOException {
         return datastore.writeJob(val, job);
     }
 
-    public ReadJobResponse readJob(Job job) {
+    public ReadJobResponse readJob(Job job) throws IOException {
         return datastore.readJob(job);
     }
 

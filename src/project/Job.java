@@ -39,11 +39,11 @@ public class Job {
         this.in = in;
     }
 
-    public OutputDestination getOutputSource() {
+    public OutputDestination getOutputDestination() {
         return out;
     }
 
-    public void setOutputSource(OutputDestination out) {
+    public void setOutputDestination(OutputDestination out) {
         this.out = out;
     }
 }
