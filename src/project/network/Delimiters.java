@@ -1,13 +1,17 @@
 package project.network;
 
 public class Delimiters {
-    private String characters;
+    private char character;
 
-    public Delimiters(String characters) {
-        this.characters = characters;
+    public Delimiters(char character) {
+        this.character = character;
     }
 
     public Delimiters() {
-        this.characters = ",";
+        this.character = ',';
+    }
+
+    public char getCharacter() {
+        return character;
     }
 }

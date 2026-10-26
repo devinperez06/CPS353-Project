@@ -20,7 +20,7 @@ public class Job {
     public Job(InputSource in, OutputDestination out) {
         this.in = in;
         this.out = out;
-        this.delim = new Delimiters(":.");
+        this.delim = new Delimiters(',');
         id += 1;
     }
 
@@ -35,15 +35,12 @@ public class Job {
         return in;
     }
 
-    public void setInputSource(InputSource in) {
-        this.in = in;
-    }
-
     public OutputDestination getOutputDestination() {
         return out;
     }
 
-    public void setOutputDestination(OutputDestination out) {
-        this.out = out;
+    public Delimiters getDelim() {
+        return delim;
     }
+
 }
