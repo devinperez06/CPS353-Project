@@ -22,4 +22,16 @@ public class CalculatorImpTest {
             fail();
         }
     }
+
+    @Test
+    public void testSolveEmpty() {
+        InputValue input = new InputValue();
+        CalculatorImp imp = new CalculatorImp();
+        SolveResponse res = imp.solve(input);
+        ResponseCode responseCode = res.getResponseCode();
+        OutputValue outputValue = res.getOutput();
+        if (responseCode.success() || outputValue != null) {
+            fail();
+        }
+    }
 }
