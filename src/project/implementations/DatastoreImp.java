@@ -18,8 +18,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatastoreImp implements Datastore {
-    // Currently, formatting is being handled by Calculator, Calculator uses default , delimiter
-    // TODO: Move formatting logic to write job method
     @Override
     public WriteJobResponse writeJob(OutputValue val, Job job) throws IOException {
         WriteJobResponse badRes = () -> ResponseCode.FAILURE;
@@ -33,10 +31,10 @@ public class DatastoreImp implements Datastore {
         for (int i = 0; i < solList.size(); i++) {
             int sol = val.getOutput().get(i);
             if (i != solList.size() - 1) {
-                writer.write(sol);
+                writer.write(String.valueOf(sol));
                 writer.write(character);
             } else {
-                writer.write(sol);
+                writer.write(String.valueOf(sol));
             }
         }
         writer.close();
