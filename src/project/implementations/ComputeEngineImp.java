@@ -13,6 +13,8 @@ import project.network.OutputDestination;
 import project.process.WriteJobResponse;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class ComputeEngineImp implements ComputeEngine {
     JobHandler jobHandler;
@@ -35,6 +37,18 @@ public class ComputeEngineImp implements ComputeEngine {
             }
         };
         if (input == null || output == null || delim == null) {
+            return badRes;
+        }
+        Path inpath = Path.of(input.getFilePath());
+        if (!Files.exists(inpath)) {
+            return badRes;
+        }
+        Path outpath = Path.of(output.getFilePath());
+        Path parent = outpath.getParent();
+        if (parent == null || !Files.exists(parent)) {
+            return badRes;
+        }
+        if (!Files.isDirectory(parent)) {
             return badRes;
         }
         Job job = new Job(input, output, delim);

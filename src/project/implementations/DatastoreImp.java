@@ -14,6 +14,8 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,6 +24,17 @@ public class DatastoreImp implements Datastore {
     public WriteJobResponse writeJob(OutputValue val, Job job) throws IOException {
         WriteJobResponse badRes = () -> ResponseCode.FAILURE;
         if (val == null || job == null) {
+            return badRes;
+        }
+        if (val.getOutput().isEmpty() || job.getOutputDestination() == null) {
+            return badRes;
+        }
+        Path path = Path.of(job.getOutputDestination().getFilePath());
+        Path parent = path.getParent();
+        if (parent == null || !Files.exists(parent)) {
+            return badRes;
+        }
+        if (!Files.isDirectory(parent)) {
             return badRes;
         }
         BufferedWriter writer = new BufferedWriter(new FileWriter(job.getOutputDestination().getFilePath()));
@@ -54,7 +67,11 @@ public class DatastoreImp implements Datastore {
                 return null;
             }
         };
-        if (job == null) {
+        if (job == null || job.getInputSource() == null) {
+            return badRes;
+        }
+        Path path = Path.of(job.getInputSource().getFilePath());
+        if (!Files.exists(path)) {
             return badRes;
         }
         List<Integer> nums = new ArrayList<>();
