@@ -12,7 +12,8 @@ import project.network.JobSubmissionResponse;
 import project.network.OutputDestination;
 import project.process.WriteJobResponse;
 
-import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class ComputeEngineImp implements ComputeEngine {
     JobHandler jobHandler;
@@ -22,33 +23,105 @@ public class ComputeEngineImp implements ComputeEngine {
     }
 
     @Override
-    public JobSubmissionResponse submitJob(InputSource input, OutputDestination output, Delimiters delim) throws IOException {
-        JobSubmissionResponse badRes = new JobSubmissionResponse() {
-            @Override
-            public ResponseCode getResponseCode() {
-                return ResponseCode.FAILURE;
-            }
-
-            @Override
-            public String response() {
-                return "";
-            }
-        };
+    public JobSubmissionResponse submitJob(InputSource input, OutputDestination output, Delimiters delim) {
         if (input == null || output == null || delim == null) {
-            return badRes;
+            return new JobSubmissionResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.INVALID_ARGUMENT;
+                }
+
+                @Override
+                public String response() {
+                    return "";
+                }
+            };
+        }
+        Path inpath = Path.of(input.getFilePath());
+        if (!Files.exists(inpath)) {
+            return new JobSubmissionResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.FILE_DOESNT_EXIST;
+                }
+
+                @Override
+                public String response() {
+                    return "";
+                }
+            };
+        }
+
+        Path outpath = Path.of(output.getFilePath());
+        Path parent = outpath.getParent();
+        if (parent == null || !Files.exists(parent)) {
+            return new JobSubmissionResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.DIRECTORY_NOT_FOUND;
+                }
+
+                @Override
+                public String response() {
+                    return "";
+                }
+            };
+        }
+        if (!Files.isDirectory(parent)) {
+            return new JobSubmissionResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.INVALID_DIRECTORY;
+                }
+
+                @Override
+                public String response() {
+                    return "";
+                }
+            };
         }
         Job job = new Job(input, output, delim);
         InputValue inputVal = jobHandler.readJob(job).getInput();
         if (inputVal == null) {
-            return badRes;
+            return new JobSubmissionResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.FAILURE;
+                }
+
+                @Override
+                public String response() {
+                    return "Null input value returned by read operation";
+                }
+            };
         }
         OutputValue outputVal = jobHandler.solve(inputVal).getOutput();
         if (outputVal == null) {
-            return badRes;
+            return new JobSubmissionResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.FAILURE;
+                }
+
+                @Override
+                public String response() {
+                    return "Null output value returned by solve operation.";
+                }
+            };
         }
         WriteJobResponse res = jobHandler.writeJob(outputVal, job);
         if (!(res.getResponseCode().success())) {
-            return badRes;
+            return new JobSubmissionResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.FAILURE;
+                }
+
+                @Override
+                public String response() {
+                    return "Write operation failed.";
+                }
+            };
         }
         return new JobSubmissionResponse() {
             @Override

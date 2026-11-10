@@ -15,7 +15,6 @@ import project.network.OutputDestination;
 import project.process.ReadJobResponse;
 import project.process.WriteJobResponse;
 
-import java.io.IOException;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.fail;
@@ -24,7 +23,7 @@ import static org.mockito.Mockito.when;
 
 public class ComputeEngineImpTest {
     @Test
-    public void testSubmitJob() throws IOException {
+    public void testSubmitJob() {
         InputSource input = new InputSource();
         OutputDestination output = new OutputDestination();
         Delimiters delim = new Delimiters();

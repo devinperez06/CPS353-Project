@@ -17,17 +17,33 @@ public class JobHandler {
         this.calculator = calculator;
     }
 
-    public WriteJobResponse writeJob(OutputValue val, Job job) throws IOException {
-        return datastore.writeJob(val, job);
+    public WriteJobResponse writeJob(OutputValue val, Job job) {
+        try {
+            return datastore.writeJob(val, job);
+        } catch (IOException e) {
+            return () -> ResponseCode.IO_ERROR;
+        }
     }
 
-    public ReadJobResponse readJob(Job job) throws IOException {
-        return datastore.readJob(job);
+    public ReadJobResponse readJob(Job job) {
+        try {
+            return datastore.readJob(job);
+        } catch (IOException e) {
+            return new ReadJobResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.IO_ERROR;
+                }
+
+                @Override
+                public InputValue getInput() {
+                    return null;
+                }
+            };
+        }
     }
 
     public SolveResponse solve(InputValue val) {
         return calculator.solve(val);
     }
-
-
 }

@@ -12,58 +12,91 @@ import java.util.List;
 public class CalculatorImp implements Calculator {
     @Override
     public SolveResponse solve(InputValue input) {
-        // Initialize a bad response to re-use
-        SolveResponse badRes = new SolveResponse() {
-            @Override
-            public ResponseCode getResponseCode() {
-                return ResponseCode.FAILURE;
-            }
+        try {
+            // Check for null values
+            if (input == null) {
+                return new SolveResponse() {
+                    @Override
+                    public ResponseCode getResponseCode() {
+                        return ResponseCode.INVALID_ARGUMENT;
+                    }
 
-            @Override
-            public OutputValue getOutput() {
-                return null;
+                    @Override
+                    public OutputValue getOutput() {
+                        return null;
+                    }
+                };
             }
-        };
-        // Check for null values
-        if (input == null) {
-            return badRes;
-        }
-        // Check for empty list
-        List<Integer> inputList = input.getInputs();
-        if (inputList.isEmpty()) {
-            return badRes;
-        }
-        // Check for invalid inputs
-        for (Integer i : inputList) {
-            if (i == null | i < 1) {
-                return badRes;
+            // Check for empty list
+            List<Integer> inputList = input.getInputs();
+            if (inputList.isEmpty()) {
+                return new SolveResponse() {
+                    @Override
+                    public ResponseCode getResponseCode() {
+                        return ResponseCode.INVALID_ARGUMENT;
+                    }
+
+                    @Override
+                    public OutputValue getOutput() {
+                        return null;
+                    }
+                };
             }
-        }
-        // Solve
-        ArrayList<Integer> solution = new ArrayList<>();
-        for (int index = 0; index < inputList.size(); index++) {
-            int n = inputList.get(index);
-            int sum = 0;
-            for (int j = n - 1; j > 1; j--) {
-                if (isPrime(j)) {
-                    sum += j;
+            // Check for invalid inputs
+            for (Integer i : inputList) {
+                if (i == null | i < 1) {
+                    return new SolveResponse() {
+                        @Override
+                        public ResponseCode getResponseCode() {
+                            return ResponseCode.INVALID_ARGUMENT;
+                        }
+
+                        @Override
+                        public OutputValue getOutput() {
+                            return null;
+                        }
+                    };
                 }
             }
-            solution.add(sum);
+            // Solve
+            ArrayList<Integer> solution = new ArrayList<>();
+            for (int index = 0; index < inputList.size(); index++) {
+                int n = inputList.get(index);
+                int sum = 0;
+                for (int j = n - 1; j > 1; j--) {
+                    if (isPrime(j)) {
+                        sum += j;
+                    }
+                }
+                solution.add(sum);
+            }
+
+            OutputValue output = new OutputValue(solution);
+            return new SolveResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.SUCCESS;
+                }
+
+                @Override
+                public OutputValue getOutput() {
+                    return output;
+                }
+            };
+
+        } catch (RuntimeException e) {
+            return new SolveResponse() {
+                @Override
+                public ResponseCode getResponseCode() {
+                    return ResponseCode.INTERNAL_ERROR;
+                }
+
+                @Override
+                public OutputValue getOutput() {
+                    return null;
+                }
+            };
         }
-
-        OutputValue output = new OutputValue(solution);
-        return new SolveResponse() {
-            @Override
-            public ResponseCode getResponseCode() {
-                return ResponseCode.SUCCESS;
-            }
-
-            @Override
-            public OutputValue getOutput() {
-                return output;
-            }
-        };
     }
 
     private boolean isPrime(int j) {
