@@ -31,7 +31,10 @@ public class DatastoreImp implements Datastore {
             }
             Path path = Path.of(job.getOutputDestination().getFilePath());
             Path parent = path.getParent();
-            if (parent == null || !Files.exists(parent)) {
+            if (parent == null) {
+                parent = Path.of("").toAbsolutePath();
+            }
+            if (!Files.exists(parent)) {
                 return () -> ResponseCode.DIRECTORY_NOT_FOUND;
             }
             if (!Files.isDirectory(parent)) {
