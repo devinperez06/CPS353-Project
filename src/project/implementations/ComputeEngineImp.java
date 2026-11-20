@@ -55,7 +55,12 @@ public class ComputeEngineImp implements ComputeEngine {
 
             Path outpath = Path.of(output.getFilePath());
             Path parent = outpath.getParent();
-            if (parent == null || !Files.exists(parent)) {
+            
+            if (parent == null) {
+                parent = Path.of("").toAbsolutePath();
+            }
+
+            if (!Files.exists(parent)) {
                 return new JobSubmissionResponse() {
                     @Override
                     public ResponseCode getResponseCode() {
