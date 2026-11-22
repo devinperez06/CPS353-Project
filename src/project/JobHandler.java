@@ -9,8 +9,8 @@ import project.process.WriteJobResponse;
 import java.io.IOException;
 
 public class JobHandler {
-    Datastore datastore;
-    Calculator calculator;
+    private final Datastore datastore;
+    private final Calculator calculator;
 
     public JobHandler(Datastore datastore, Calculator calculator) {
         this.datastore = datastore;

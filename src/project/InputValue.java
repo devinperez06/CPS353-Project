@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InputValue {
-    private List<Integer> inputs;
+    private final List<Integer> inputs;
 
     public InputValue(List<Integer> inputs) {
-        this.inputs = inputs;
+        this.inputs = inputs == null
+            ? new ArrayList<>()
+            : new ArrayList<>(inputs);
     }
 
     public InputValue() {
@@ -15,6 +17,6 @@ public class InputValue {
     }
 
     public List<Integer> getInputs() {
-        return inputs;
+        return List.copyOf(inputs);
     }
 }
