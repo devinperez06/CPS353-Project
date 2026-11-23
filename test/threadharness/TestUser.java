@@ -1,6 +1,6 @@
 package threadharness;
 
-import project.implementations.ComputeEngineImp;
+import project.network.ComputeEngine;
 import project.network.Delimiters;
 import project.network.InputSource;
 import project.network.OutputDestination;
@@ -9,9 +9,9 @@ import java.io.File;
 
 
 public class TestUser {
-    private final ComputeEngineImp coordinator;
+    private final ComputeEngine coordinator;
 
-    public TestUser(ComputeEngineImp coordinator) {
+    public TestUser(ComputeEngine coordinator) {
         this.coordinator = coordinator;
     }
 

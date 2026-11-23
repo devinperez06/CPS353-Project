@@ -8,7 +8,7 @@ import project.network.JobSubmissionResponse;
 import project.network.OutputDestination;
 
 public class ComputeEngineImp implements ComputeEngine {
-    JobHandler jobHandler;
+    private JobHandler jobHandler;
 
     public ComputeEngineImp(JobHandler jobHandler) {
         this.jobHandler = jobHandler;

@@ -7,6 +7,7 @@ import project.JobHandler;
 import project.implementations.CalculatorImp;
 import project.implementations.ComputeEngineImp;
 import project.implementations.DatastoreImp;
+import project.implementations.MultiThreadedComputeEngineImp;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,20 +20,21 @@ import java.util.concurrent.Future;
 
 public class TestMultiUser {
 
-    // interface
-    private ComputeEngineImp coordinator;
+    private ComputeEngineImp singleThreadedEngine;
+    private MultiThreadedComputeEngineImp multiThreadedEngine;
 
     @BeforeEach
-    public void initializeComputeEngine() {
-        coordinator = new ComputeEngineImp(new JobHandler(new DatastoreImp(), new CalculatorImp()));
+    public void initializeComputeEngines() {
+        singleThreadedEngine = new ComputeEngineImp(new JobHandler(new DatastoreImp(), new CalculatorImp()));
+        multiThreadedEngine = new MultiThreadedComputeEngineImp(new JobHandler(new DatastoreImp(), new CalculatorImp()));
     }
 
     @Test
     public void compareMultiAndSingleThreaded() throws Exception {
         int nThreads = 4;
-        List<TestUser> testUsers = new ArrayList<>();
+        List<TestUser> singleUsers = new ArrayList<>();
         for (int i = 0; i < nThreads; i++) {
-            testUsers.add(new TestUser(coordinator));
+            singleUsers.add(new TestUser(singleThreadedEngine));
         }
 
         // Run single threaded
@@ -41,31 +43,37 @@ public class TestMultiUser {
             File singleThreadedOut =
                 new File(singleThreadFilePrefix + i);
             singleThreadedOut.deleteOnExit();
-            testUsers.get(i).run(singleThreadedOut.getCanonicalPath());
+            singleUsers.get(i).run(singleThreadedOut.getCanonicalPath());
         }
 
         // Run multi threaded
-        ExecutorService threadPool = Executors.newCachedThreadPool();
-        List<Future<?>> results = new ArrayList<>();
-        String multiThreadFilePrefix = "testMultiUser.compareMultiAndSingleThreaded.test.multiThreadOut.tmp";
+        List<TestUser> multiUsers = new ArrayList<>();
         for (int i = 0; i < nThreads; i++) {
-            File multiThreadedOut =
-                new File(multiThreadFilePrefix + i);
-            multiThreadedOut.deleteOnExit();
-            String multiThreadOutputPath = multiThreadedOut.getCanonicalPath();
-            TestUser testUser = testUsers.get(i);
-            results.add(threadPool.submit(() -> testUser.run(multiThreadOutputPath)));
+            multiUsers.add(new TestUser(multiThreadedEngine));
         }
+        String multiThreadFilePrefix =
+            "testMultiUser.compareMultiAndSingleThreaded.test.multiThreadOut.tmp";
+        ExecutorService testPool = Executors.newFixedThreadPool(nThreads);
+        try {
+            List<Future<?>> results = new ArrayList<>();
 
-        results.forEach(future -> {
-            try {
-                future.get();
-            } catch (Exception e) {
-                throw new RuntimeException(e);
+            for (int i = 0; i < nThreads; i++) {
+                File output = new File(multiThreadFilePrefix + i);
+                output.deleteOnExit();
+
+                String outputPath = output.getCanonicalPath();
+                TestUser testUser = multiUsers.get(i);
+
+                results.add(testPool.submit(
+                    () -> testUser.run(outputPath)));
             }
-        });
-        threadPool.shutdown();
-
+            for (Future<?> future : results) {
+                future.get();
+            }
+        } finally {
+            testPool.shutdown();
+            multiThreadedEngine.close();
+        }
 
         // Check that the output is the same for multi-threaded and single-threaded
         List<String> singleThreaded = loadAllOutput(singleThreadFilePrefix, nThreads);

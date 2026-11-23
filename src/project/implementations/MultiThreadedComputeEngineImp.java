@@ -16,7 +16,7 @@ import java.util.concurrent.Future;
 public class MultiThreadedComputeEngineImp implements ComputeEngine {
     private static final int MAX_THREADS = 4;
     private final ExecutorService executor = Executors.newFixedThreadPool(MAX_THREADS);
-    private final JobHandler jobHandler;
+    private JobHandler jobHandler;
 
     public MultiThreadedComputeEngineImp(JobHandler jobHandler) {
         this.jobHandler = jobHandler;
