@@ -4,10 +4,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class OutputValue {
-    List<Integer> output;
+    private final List<Integer> output;
 
     public OutputValue(List<Integer> output) {
-        this.output = output;
+        this.output = output == null
+            ? new ArrayList<>()
+            : new ArrayList<>(output);
     }
 
     public OutputValue() {
@@ -15,6 +17,6 @@ public class OutputValue {
     }
 
     public List<Integer> getOutput() {
-        return output;
+        return List.copyOf(output);
     }
 }

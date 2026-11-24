@@ -44,7 +44,7 @@ public class CalculatorImp implements Calculator {
             }
             // Check for invalid inputs
             for (Integer i : inputList) {
-                if (i == null | i < 1) {
+                if (i == null || i < 1) {
                     return new SolveResponse() {
                         @Override
                         public ResponseCode getResponseCode() {
